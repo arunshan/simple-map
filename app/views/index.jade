@@ -1,5 +1,9 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  h1 Simple Maps
+  form.container(method="post", action="/login")
+    input(type="text", required)
+    input(type="password", required)
+    button(type="submit") Submit
+    a.createAccount(href="/create") Create Account
