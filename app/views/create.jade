@@ -1,11 +1,12 @@
 extends layout
 
 block content
-  h2 Login
-  form.container(method="post", action="/login")
+  h2 Create Account
+  form.container(method="post", action="/create")
+    .subHeader Enter Email Address
+    input(type="text", required)
     .subHeader Enter Username
     input(type="text", required)
     .subHeader Enter Password
     input(type="password", required)
     button(type="submit") Submit
-    a.createAccount(href="/create") Create Account

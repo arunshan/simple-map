@@ -5,12 +5,15 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+var passport = require('passport');
+var session = require('express-session');
 var routes = require('./app/controllers');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/simplemap');
 
 var app = express();
 
+require('./app/controllers/Authentication').init(app)
 // view engine setup
 app.set('views', path.join(__dirname, 'app/views'));
 app.set('view engine', 'jade');

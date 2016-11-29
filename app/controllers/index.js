@@ -6,4 +6,7 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
 });
 
+var users = require('./Users')
+router.get('/create', (req, res, next) => users.create(req, res, next))
+
 module.exports = router;
