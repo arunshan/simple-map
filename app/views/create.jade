@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  h2 Create Account
+  form.container(method="post", action="/register")
+    .subHeader Enter Username
+    input(type="text", name="username", required)
+    .subHeader Enter Password
+    input(type="password", name="password", required)
+    button(type="submit") Submit

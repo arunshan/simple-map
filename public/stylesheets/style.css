@@ -6,3 +6,52 @@ body {
 a {
   color: #00B7FF;
 }
+
+.header {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 40px;
+  background-color: #4285f4;
+  display: flex;
+  justify-content: center;
+}
+
+.headerText {
+  text-align: center;
+  align-self: center;
+  color: #ffffff;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+input {
+  width: 100%;
+  height: 30px;
+  border: 1px solid #e5e5e5;
+  padding: 5px;
+}
+
+button {
+  width: 100%;
+  height: 30px;
+  border: none;
+  background-color: #4285f4;
+  color: #ffffff;
+  align-self: center;
+  margin-top: 10px;
+}
+
+.createAccount {
+  margin-top: 10px;
+  align-self: center;
+}
+
+.subHeader {
+  margin: 5px 0 5px 0;
+}

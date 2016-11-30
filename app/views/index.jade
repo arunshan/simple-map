@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h2 Login
+  form.container(method="post", action="/login")
+    .subHeader Enter Username
+    input(type="text", name="username", required)
+    .subHeader Enter Password
+    input(type="password", name="password", required)
+    button(type="submit") Submit
+    a.createAccount(href="/register") Create Account
