@@ -2,9 +2,18 @@ extends layout
 
 block content
   link(href="stylesheets/map.css", rel='stylesheet')
-  h2 Map
+  .topRow
+    .rowHeader
+      h2 Saved Maps
+    .rightContainer
+      button.create Create Map
+    
   .content
-    .mapContainer
-      #map
+    //- .mapContainer
+    //-   #map
+    .savedMaps
+      - for (var i = 0; i < 10; ++i) {
+          .box
+      - }
   script(src="javascripts/map.js")
     

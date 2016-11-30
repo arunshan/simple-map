@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  link(href="stylesheets/createMap.css", rel='stylesheet')
+  h2 Enter Top Right and Bottom Left Coordinates
+  .mainContainer
+    form.container(method="post", action="/create")
+      .subHeader Enter Top Right Latitude
+      input.topRightLatitude(type="number", name="topRightLatitude", required)
+      .subHeader Enter Top Right Longitude
+      input.topRightLongitude(type="number", name="topRightLongitude", required)
+      .subHeader Enter Bottom Left Latitude
+      input.bottomLeftLatitude(type="number", name="bottomLeftLatitude", required)
+      .subHeader Enter Bottom Left Longitude
+      input.bottomLeftLongitude(type="number", name="bottomLeftLongitude", required)
+      .rowButtons
+        button(type="submit", disabled) Submit
+        button.previewMapButton(type="button") Preview
+    .content
+      .mapContainer
+        #map
+  script(src="javascripts/createMap.js")

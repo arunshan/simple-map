@@ -18,5 +18,7 @@ router.post('/login', (req, res, next) => users.login(req, res, next));
 
 var maps = require('./Maps');
 router.get('/maps', (req, res, next) => maps.userMaps(req, res, next));
+router.get('/create', (req, res, next) => res.render('createMap', {}));
+router.post('/create', (req, res, next) => maps.create(req, res, next));
 
 module.exports = router;
