@@ -8,7 +8,7 @@
       zoom: 9
   });
 
-  $('.previewMapButton').click(() => {
+  function getPreview() {
     $('.content').css({display: 'flex'});
     var topRightLatitude = $('.topRightLatitude').val();
     var topRightLongitude = $('.topRightLongitude').val();
@@ -35,5 +35,40 @@
         5.615985
       ]]);
     }
+  }
+  // preview map
+  $('.previewMapButton').click(() => {
+    getPreview()
   });
+
+  // submit map
+  $('button.createFormButton').click(() => {
+    var topRightLatitude = $('.topRightLatitude').val();
+    var topRightLongitude = $('.topRightLongitude').val();
+    var bottomLeftLatitude = $('.bottomLeftLatitude').val();
+    var bottomLeftLongitude = $('.bottomLeftLongitude').val();
+    if (topRightLatitude && topRightLongitude && bottomLeftLatitude && bottomLeftLongitude) {
+      try {
+        map.fitBounds([[
+          topRightLatitude,
+          topRightLongitude
+        ], [
+          bottomLeftLatitude,
+          bottomLeftLongitude
+        ]]);
+        $.ajax({
+          url: '/create',
+          type: 'post',
+          dataType: 'json',
+          data: $('form#createMap').serialize(),
+          success: (data) => {
+            window.location.href = '/maps'
+          }
+        });
+      } catch (err) {
+        alert(err);
+      }
+    }
+  });
+
 }());

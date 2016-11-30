@@ -20,5 +20,6 @@ var maps = require('./Maps');
 router.get('/maps', (req, res, next) => maps.userMaps(req, res, next));
 router.get('/create', (req, res, next) => res.render('createMap', {}));
 router.post('/create', (req, res, next) => maps.create(req, res, next));
+router.post('/delete', (req, res, next) => maps.deleteMap(req, res, next));
 
 module.exports = router;

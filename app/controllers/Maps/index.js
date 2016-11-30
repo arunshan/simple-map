@@ -1,13 +1,28 @@
 /*jshint esversion: 6 */
 
 const MapModel = require('../../models/Map');
-
 exports.userMaps = (req, res, next) => {
   if (!req.session && !req.session.user) {
     return res.redirect('/');
   }
   const user = req.session.user;
-  return res.render('map', {user});
+  MapModel.find({user: user._id}).exec().then(maps => {
+    var finalMaps = []
+    maps.map(singleMap => {
+      var tempMap = {}
+      tempMap.id = singleMap._id
+      tempMap.topRightLat = singleMap.topRightLat
+      tempMap.topRightLng = singleMap.topRightLng
+      tempMap.bottomLeftLat = singleMap.bottomLeftLat
+      tempMap.bottomLeftLng = singleMap.bottomLeftLng
+      tempMap.user = singleMap.user
+      finalMaps.push(tempMap)
+    })
+    return res.render('maps', {
+      user,
+      maps: finalMaps
+    });
+  });
 };
 
 exports.create = (req, res, next) => {
@@ -30,5 +45,16 @@ exports.create = (req, res, next) => {
   const promise = newMap.save();
   promise.then((user) => {
     return res.redirect('/maps');
+  });
+};
+
+exports.deleteMap = (req, res, next) => {
+  if (!req.session && !req.session.user) {
+    return res.redirect('/');
+  }
+  var user = req.session.user;
+
+  MapModel.findOne({_id: req.body.id}).remove().exec().then(map => {
+    return res.json(map);
   });
 };

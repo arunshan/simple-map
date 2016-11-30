@@ -4,17 +4,17 @@ block content
   link(href="stylesheets/createMap.css", rel='stylesheet')
   h2 Enter Top Right and Bottom Left Coordinates
   .mainContainer
-    form.container(method="post", action="/create")
+    form.container#createMap(method="post", action="/create")
       .subHeader Enter Top Right Latitude
-      input.topRightLatitude(type="number", name="topRightLatitude", required)
+      input.topRightLatitude(type="number", step="any", name="topRightLatitude", required)
       .subHeader Enter Top Right Longitude
-      input.topRightLongitude(type="number", name="topRightLongitude", required)
+      input.topRightLongitude(type="number", step="any", name="topRightLongitude", required)
       .subHeader Enter Bottom Left Latitude
-      input.bottomLeftLatitude(type="number", name="bottomLeftLatitude", required)
+      input.bottomLeftLatitude(type="number", step="any", name="bottomLeftLatitude", required)
       .subHeader Enter Bottom Left Longitude
-      input.bottomLeftLongitude(type="number", name="bottomLeftLongitude", required)
+      input.bottomLeftLongitude(type="number", step="any", name="bottomLeftLongitude", required)
       .rowButtons
-        button(type="submit", disabled) Submit
+        button.createFormButton(type="submit") Submit
         button.previewMapButton(type="button") Preview
     .content
       .mapContainer

@@ -1,0 +1,39 @@
+extends layout
+
+block content
+  link(href="stylesheets/map.css", rel='stylesheet')
+  .topRow
+    .rowHeader
+      h2 Welcome #{user.username}
+    .rightContainer
+      button.create Create Map
+    
+  .content
+    .savedMaps
+      - for (var i = 0; i < maps.length; ++i) {
+      - var map = maps[i]
+      - console.log('the map is ', map)
+        .boxContainer
+          div.mapElem(id="#{'map_' + i}", class="box")
+          .boxRow
+            button.editButton(data-map="#{map}") Edit
+            button.deleteButton(data-map="#{JSON.stringify(map)}") Delete
+          
+        script.
+          try {
+            var map = new mapboxgl.Map({
+              container: '#{'map_' + i}',
+              style: 'mapbox://styles/mapbox/streets-v9',
+              zoom: 1,
+              interactive: false,
+              maxBounds: [
+                [#{map.topRightLat}, #{map.topRightLng}],
+                [#{map.bottomLeftLat}, #{map.bottomLeftLng}]
+              ]
+            });
+          } catch (err) {
+            $('#' + '#{'map_' + i}').html(err)
+          }
+      - }
+  script(src="javascripts/map.js")
+    
