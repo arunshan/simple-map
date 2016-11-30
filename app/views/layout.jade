@@ -2,8 +2,13 @@ doctype html
 html
   head
     title= title
+    meta(name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css', rel='stylesheet')
   body
+    include ./footer
     .header
       .headerText Simple Maps
     block content
+    
+      
