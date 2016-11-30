@@ -33,7 +33,8 @@ exports.login = (req, res, next) => {
   };
   Account.findOne(user).exec().then(user => {
     req.session.user = user;
-    return res.render('maps', {user});
+    // return res.render('maps', {user});
+    return res.redirect('/maps');
   });
 };
 

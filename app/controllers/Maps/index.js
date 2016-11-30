@@ -1,8 +1,9 @@
 /*jshint esversion: 6 */
 
 const MapModel = require('../../models/Map');
+const MarkerModel = require('../../models/Marker')
 exports.userMaps = (req, res, next) => {
-  if (!req.session && !req.session.user) {
+  if (!req.session.user) {
     return res.redirect('/');
   }
   const user = req.session.user;
@@ -44,7 +45,7 @@ exports.create = (req, res, next) => {
   var newMap = new MapModel(map);
   const promise = newMap.save();
   promise.then((user) => {
-    return res.redirect('/maps');
+    return res.json(user);
   });
 };
 
@@ -60,7 +61,7 @@ exports.deleteMap = (req, res, next) => {
 };
 
 exports.editMap = (req, res, next) => {
-  if (!req.session && !req.session.user) {
+  if (!req.session.user) {
     return res.redirect('/');
   }
   MapModel.findOne({_id: req.body.id}).exec().then(map => {
@@ -73,4 +74,16 @@ exports.editMap = (req, res, next) => {
       return res.json(map);
     });
   });
+};
+
+exports.viewMap = (req, res, next) => {
+  if (!req.session.user) {
+    return res.redirect('/');
+  }
+  const user = req.session.user;
+  const mapId = JSON.parse(req.query.params).id;
+  MarkerModel.find({map: mapId}).exec().then(markers => {
+    console.log('the markers are ', markers)
+    return res.render('view', {user, markers});
+  })
 };

@@ -22,5 +22,9 @@ router.get('/create', (req, res, next) => res.render('createMap', {}));
 router.post('/create', (req, res, next) => maps.create(req, res, next));
 router.post('/delete', (req, res, next) => maps.deleteMap(req, res, next));
 router.post('/edit', (req, res, next) => maps.editMap(req, res, next));
+router.get('/view', (req, res, next) => maps.viewMap(req, res, next));
+
+var markers = require('./Markers');
+router.get('/createMarker', (req, res, next) => markers.createMarker(req, res, next));
 
 module.exports = router;

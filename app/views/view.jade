@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  link(href="stylesheets/view.css", rel='stylesheet')
+  h2 View
+  .mainContainer
+    .leftContent
+      #map
+    .rightContent
+      h3 Markers
+      .markers
+        - for(var i = 0; i < markers.length; i++) {
+          div.marker
+            h3 Marker #{i + 1}
+            div
+              label Latitude: &nbsp;
+              span #{markers[i].lat}
+            div
+              label Longitude: &nbsp;
+              span #{markers[i].lng}
+        - }
+  script(src="javascripts/view.js")
+    
