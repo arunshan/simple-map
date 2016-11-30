@@ -15,6 +15,7 @@ block content
         .boxContainer
           div.mapElem(id="#{'map_' + i}", class="box")
           .boxRow
+            button.viewButton(data-map="#{JSON.stringify(map)}") View
             button.editButton(data-map="#{JSON.stringify(map)}") Edit
             button.deleteButton(data-map="#{JSON.stringify(map)}") Delete
           

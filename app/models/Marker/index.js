@@ -2,11 +2,11 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 var ObjectId = Schema.ObjectId;
 
-var mapSchema = new Schema({
+var markerSchema = new Schema({
     id: ObjectId,
     lat: Number,
     lng: Number,
     map: {type: Schema.Types.ObjectId, ref: 'Map'}
 });
 
-module.exports = mongoose.model('Marker', userSchema);
+module.exports = mongoose.model('Marker', markerSchema);

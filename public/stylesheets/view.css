@@ -1,0 +1,33 @@
+.mainContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.leftContent {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+}
+
+.rightContent {
+  width: 50%;
+  height: 100%;
+  position: absolute;
+  left: 55%;
+}
+
+#map {
+  width: 100%;
+  height: 100%;
+}
+
+.markers {
+  width: 300px;
+}
+
+.marker {
+  margin-top: 5px;
+  border: 2px solid #d5d5d5;
+  padding: 5px;
+}

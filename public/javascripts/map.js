@@ -8,7 +8,6 @@
 
   $('.editButton').click(e => {
     var mapData = $(e.target).data('map');
-    console.log('The mapdata is ', mapData)
     var uriStr = JSON.stringify(mapData);
     window.location.href = '/create?params=' + uriStr;
   });
@@ -25,4 +24,9 @@
     });
   });
 
+  $('.viewButton').click(e => {
+    var mapData = $(e.target).data('map');
+    var uriStr = JSON.stringify(mapData);
+    window.location.href = '/view?params=' + uriStr;
+  });
 }());
