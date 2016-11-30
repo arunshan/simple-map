@@ -8,7 +8,7 @@ block content
       #map
     .rightContent
       h3 Markers
-      .markers
+      .markers(data-markers="#{JSON.stringify(markers)}")
         - for(var i = 0; i < markers.length; i++) {
           div.marker
             h3 Marker #{i + 1}
