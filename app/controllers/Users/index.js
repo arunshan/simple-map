@@ -21,9 +21,9 @@ exports.createUser = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  if (req.session && req.session.user) {
-    return res.redirect('/maps');
-  }
+  // if (req.session && req.session.user) {
+  //   return res.redirect('/maps');
+  // }
   const session = req.session;
   const username = req.body.username;
   const password = req.body.password;
