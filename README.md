@@ -27,3 +27,9 @@ npm i
 ```
 npm start
 ```
+
+5. To run tests
+
+```
+npm test
+```
