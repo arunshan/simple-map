@@ -58,3 +58,19 @@ exports.deleteMap = (req, res, next) => {
     return res.json(map);
   });
 };
+
+exports.editMap = (req, res, next) => {
+  if (!req.session && !req.session.user) {
+    return res.redirect('/');
+  }
+  MapModel.findOne({_id: req.body.id}).exec().then(map => {
+    map.topRightLat = parseFloat(req.body.topRightLatitude);
+    map.topRightLng = parseFloat(req.body.topRightLongitude);
+    map.bottomLeftLat = parseFloat(req.body.bottomLeftLatitude);
+    map.bottomLeftLng = parseFloat(req.body.bottomLeftLongitude);
+    const promise = map.save();
+    promise.then(() => {
+      return res.json(map);
+    });
+  });
+};

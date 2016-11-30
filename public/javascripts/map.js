@@ -7,12 +7,14 @@
   });
 
   $('.editButton').click(e => {
-    var mapData = $(e.target).data('map')
-    window.location.reload();
+    var mapData = $(e.target).data('map');
+    console.log('The mapdata is ', mapData)
+    var uriStr = JSON.stringify(mapData);
+    window.location.href = '/create?params=' + uriStr;
   });
 
   $('.deleteButton').click(e => {
-    var mapData = $(e.target).data('map')
+    var mapData = $(e.target).data('map');
     $.ajax({
       url: '/delete',
       type: 'POST',

@@ -12,11 +12,10 @@ block content
     .savedMaps
       - for (var i = 0; i < maps.length; ++i) {
       - var map = maps[i]
-      - console.log('the map is ', map)
         .boxContainer
           div.mapElem(id="#{'map_' + i}", class="box")
           .boxRow
-            button.editButton(data-map="#{map}") Edit
+            button.editButton(data-map="#{JSON.stringify(map)}") Edit
             button.deleteButton(data-map="#{JSON.stringify(map)}") Delete
           
         script.
