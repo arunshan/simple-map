@@ -1,3 +1,3 @@
-require('./User')
-require('./Map')
-require('./Marker')
+require('./User');
+require('./Map');
+require('./Marker');

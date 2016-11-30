@@ -4,12 +4,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var passport = require('passport');
-var session = require('express-session');
+var session = require('client-sessions');
 var routes = require('./app/controllers');
-var mongoose = require('mongoose')
-mongoose.Promise = global.Promise
+var mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/simplemap');
 
 var app = express();
@@ -24,14 +23,21 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use('/', routes);
+app.set('trust proxy', 1);
 
+app.use(session({
+  cookieName: 'session',
+  secret: 'arunshankar_secret',
+  duration: 30 * 60 * 1000,
+  activeDuration: 5 * 60 * 1000,
+}));
+app.use('/', routes);
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
   next(err);
-})
+});
 
 // error handlers
 
