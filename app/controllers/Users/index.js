@@ -21,9 +21,6 @@ exports.createUser = (req, res, next) => {
 };
 
 exports.login = (req, res, next) => {
-  // if (req.session && req.session.user) {
-  //   return res.redirect('/maps');
-  // }
   const session = req.session;
   const username = req.body.username;
   const password = req.body.password;
@@ -33,9 +30,13 @@ exports.login = (req, res, next) => {
   };
   Account.findOne(user).exec().then(user => {
     req.session.user = user;
-    // return res.render('maps', {user});
     return res.redirect('/maps');
   });
+};
+
+exports.logout = (req, res, next) => {
+  req.session.user = null
+  res.redirect('/')
 };
 
 exports.checkSession = (req, res, next) => {

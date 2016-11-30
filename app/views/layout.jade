@@ -9,6 +9,8 @@ html
     include ./footer
     .header
       .headerText Simple Maps
+      - if (user)
+        a.logoutText(href='/logout') Logout
     block content
     
       

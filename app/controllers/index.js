@@ -15,6 +15,7 @@ router.get('/register', (req, res) =>  res.render('create', {}));
 router.post('/register', (req, res, next) => users.createUser(req, res, next));
 router.get('/login', (req, res, next) => users.checkSession(req, res, next));
 router.post('/login', (req, res, next) => users.login(req, res, next));
+router.get('/logout', (req, res, next) => users.logout(req, res, next));
 
 var maps = require('./Maps');
 router.get('/maps', (req, res, next) => maps.userMaps(req, res, next));
